@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 
 	"time"
@@ -26,6 +27,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "NaN")
 		return
 	}
+	hostname, err := os.Hostname()
+	if err != nil {
+		fmt.Fprintf(w, "Hostname not found")
+		return
+	}
 	time.Sleep(time.Second * time.Duration(seconds))
-	fmt.Fprintf(w, "Hello World! I have waited for %v seconds", seconds)
+	fmt.Fprintf(w, "Hello from %v! I have waited for %v seconds", hostname, seconds)
 }
