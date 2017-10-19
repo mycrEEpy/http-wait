@@ -1,4 +1,4 @@
-FROM golang:1.8
+FROM golang:1.9.1-alpine3.6
 
 LABEL maintainer="Tobias Germer"
 
