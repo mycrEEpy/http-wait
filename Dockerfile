@@ -5,6 +5,9 @@ LABEL maintainer="Tobias Germer"
 WORKDIR /go/src/app
 COPY . .
 
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
 RUN go-wrapper download
 RUN go-wrapper install
 
